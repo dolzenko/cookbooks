@@ -12,7 +12,9 @@ Best tested on Ubuntu 9.04,9.10. On EC2, requires platform that supports -o bind
 
 Requires Opscode's openssl cookbook for secure password generation.
 
-Requires a C compiler and Ruby development package in order to build mysql gem with native extensions. On Debian and Ubuntu systems this is satisfied by installing the "build-essential" and "ruby-dev" packages before running Chef. See USAGE below for information on how to handle this during a Chef run.
+Requires a C compiler and Ruby development package in order to build mysql gem with native extensions. 
+On Debian and Ubuntu systems this is satisfied by installing the "build-essential" and "ruby-dev" packages before running Chef. 
+See USAGE below for information on how to handle this during a Chef run.
 
 = ATTRIBUTES: 
 
@@ -48,7 +50,9 @@ As the common use case is on systems with Ruby, we also install the MySQL RubyGe
   
   r.run_action(:install)
   
-This creates a resource object for the package and does the installation before other recipes are parsed. You'll need to have the C compiler and such (ie, build-essential on Ubuntu) before running the recipes, but we already do that when installing Chef :-). If you want to be able to access a MySQL database via Ruby within another recipe, you could do so, like so:
+This creates a resource object for the package and does the installation before other recipes are parsed. 
+You'll need to have the C compiler and such (ie, build-essential on Ubuntu) before running the recipes, but we already do that when installing Chef :-). 
+If you want to be able to access a MySQL database via Ruby within another recipe, you could do so, like so:
 
   Gem.clear_paths # needed for Chef to find the gem...
   require 'mysql' # requires the mysql gem
@@ -87,7 +91,9 @@ To make sure that a C compiler and the Ruby development libraries are installed,
   ]
 }
 
-The build-essential and ruby cookbooks install the packages in question during the "execution" phase of the Chef client run, rather than the compile phase when the MySQL gem is installed. To work around this for now until the build-essential and ruby packages are updated, modify your local copies of the recipes:
+The build-essential and ruby cookbooks install the packages in question during the "execution" phase of the Chef client run, 
+rather than the compile phase when the MySQL gem is installed. To work around this for now until the build-essential and 
+ruby packages are updated, modify your local copies of the recipes:
 
 In the Opscode build-essential default recipe:
 
